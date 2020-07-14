@@ -1,0 +1,30 @@
+[push]
+       default = simple
+[pull]
+       default = simple
+
+[user]
+	name = Christian Vilen
+	email = cvilen@phz.fi
+[alias]
+       co = checkout
+       br = branch -vva
+       st = status
+       findv = log -p -S #like git blame but better
+       lastdiff = diff HEAD^ HEAD #shows diff between last two commits, without changes in current working tree
+       lg = log --color --graph --pretty=format:'%C(bold green)%h%Creset -%C(yellow)%d%Creset %s %C(bold green)(%cr)%C(red)(%ar)%C(bold cyan)<%an>%Creset' --abbrev-commit # git log in a tree format, with some styling. Shows only current HEAD and parent tree
+       lga = "!f() { git lg --all; }; f" #git lg, shows all branches
+       who = shortlog -s -n --all --no-merges #who has done how many commits
+[color]
+       ui = auto
+[pack]
+       threads = 0
+[core]
+       whitespace = cr-at-eol
+       preloadindex = true
+[http]
+       postBuffer = 524288000
+[rerere]
+       enabled = true
+[i18n]
+       commitencoding = UTF-8
