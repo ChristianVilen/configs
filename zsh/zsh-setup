@@ -1,0 +1,31 @@
+sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+
+mkdir cvilen-configs
+cd cvilen-configs
+git clone https://github.com/powerline/fonts.git --depth=1
+./fonts/install.sh
+rm -rf fonts
+
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+brew install thefuck
+# In .zshrc
+eval $(thefuck --alias)
+
+Git Aliasses
+       co = checkout
+       ci = commit
+       br = branch -vva
+       st = status
+       findv = log -p -S #like git blame but better
+       lastdiff = diff HEAD^ HEAD #shows diff between last two commits, without changes in current working tree
+       ld = "!f() { git lastdiff; }; f" #short for git lastdiff
+       lg = log --color --graph --pretty=format:'%C(bold green)%h%Creset -%C(yellow)%d%Creset %s %C(bold green)(%cr)%C(red)(%ar)%C(bold cyan)<%an>%Creset' --abbrev-commit # git log in a tree format, with some styling. Shows only current HEAD and parent tree
+       lga = "!f() { git lg --all; }; f" #git lg, shows all branches
+       who = shortlog -s -n --all --no-merges #who has done how many commits
+       spull = !git svn fetch && git svn rebase -l
+       spush = !git svn dcommit
+       shno = show --name-only
+       l=log --decorate
+       ls=log --graph --oneline --decorate
