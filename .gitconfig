@@ -1,11 +1,11 @@
-l[push]
+[push]
        default = simple
 [pull]
        default = simple
 
 [user]
 	name = Christian Vilen
-	email = c.vilen@outlook.com
+	email = 
 [alias]
        co = checkout
        br = branch -vva
