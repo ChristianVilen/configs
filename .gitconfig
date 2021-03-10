@@ -5,7 +5,7 @@
 
 [user]
 	name = Christian Vilen
-	email = cvilen@phz.fi
+	email = 
 [alias]
        co = checkout
        br = branch -vva
