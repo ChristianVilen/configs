@@ -6,3 +6,6 @@
     * `docker volume rm $(docker volume ls -qf dangling=true)`
 * List all volumes
   * `docker volume ls`
+* Leave compose running
+  * `entrypoint: ["sh", "-c", "sleep 2073600"]
+`
