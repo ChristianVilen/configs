@@ -5,7 +5,7 @@
 	ff = only
 [user]
 	name = Christian Vilen
-	email = <email>
+	email = 
 [alias]
 	co = checkout 
 	br = branch -vva 
