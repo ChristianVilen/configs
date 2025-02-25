@@ -24,6 +24,7 @@
 	preloadindex = true 
 	autocrlf = input
 	excludesfile = /Users/christian.vilen/.gitignore_global
+	editor = nvim
 [http] 
 	postBuffer = 524288000 
 [rerere]
@@ -35,3 +36,8 @@
 [diff]
 	algorithm = histogram
 	colorMoved = dimmed-zebra
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
