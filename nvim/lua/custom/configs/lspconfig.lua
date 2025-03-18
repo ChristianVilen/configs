@@ -3,7 +3,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require("lspconfig")
 
-local servers = {"tsserver", "tailwindcss", "eslint"}
+local servers = {"ts_ls", "tailwindcss", "eslint"}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -28,7 +28,7 @@ lspconfig.eslint.setup {
   end,
 }
 
-lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   single_file_support = false,
