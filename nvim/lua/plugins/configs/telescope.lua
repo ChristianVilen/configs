@@ -30,7 +30,11 @@ local options = {
       preview_cutoff = 120,
     },
     file_sorter = require("telescope.sorters").get_fuzzy_file,
-    file_ignore_patterns = { "node_modules" },
+    file_ignore_patterns = { 
+      "node_modules",
+      ".git",
+      "dist", 
+    },
     generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
     path_display = { "truncate" },
     winblend = 0,
@@ -58,28 +62,37 @@ local options = {
         "rg",
         "--files",
         "--hidden",
-        "--no-ignore",
-        "--glob",
-        "!**/.git/*",
-        "--glob",
-        "!**/node_modules/*",
-        "--glob",
-        "!**/.idea/*",
-        "--glob",
-        "!**/.zed/*",
-        "--glob",
-        "!**/.mypy_cache/*",
-        "--glob",
-        "!**/.pytest_cache/*",
-        "--glob",
-        "!**/.next/*",
+        "--glob", "!**/.git/*",
+        "--glob", "!**/node_modules/*",
+        "--glob", "!**/.idea/*",
+        "--glob", "!**/.zed/*",
+        "--glob", "!**/.mypy_cache/*",
+        "--glob", "!**/.pytest_cache/*",
+        "--glob", "!**/.next/*",
+        "--glob", "!**/*.png",
+        "--glob", "!**/*.jpg",
+        "--glob", "!**/*.jpeg",
+        "--glob", "!**/*.gif",
+        "--glob", "!**/*.svg",
+        "--glob", "!**/*.webp",
+        "--glob", "!**/*.ico",
       },
     },
     live_grep = {
-      additional_args = function(_ts)
-        return { "--hidden" }
-      end,
-    },
+      additional_args = function()
+
+      return {
+      "--hidden",
+      "--glob", "!**/.git/*",
+      "--glob", "!**/node_modules/*",
+      "--glob", "!**/*.png",
+      "--glob", "!**/*.jpg",
+      "--glob", "!**/*.jpeg",
+      "--glob", "!**/*.gif",
+      "--glob", "!**/*.svg",
+    }
+  end,
+}
   }
 }
 
