@@ -72,6 +72,14 @@ local default_plugins = {
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate",
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        ensure_installed = { "go", "gomod", "gosum", "gowork" },
+        highlight = {
+          enable = true,
+        },
+    }
+    end,
     opts = function()
       return require "plugins.configs.treesitter"
     end,

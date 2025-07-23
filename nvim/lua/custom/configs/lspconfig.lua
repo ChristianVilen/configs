@@ -35,6 +35,31 @@ lspconfig.ts_ls.setup({
   root_dir = find_tsconfig_dir,
 })
 
+lspconfig.gopls.setup {
+  cmd = { "gopls" },
+  filetypes = { "go", "gomod" },
+  capabilities = capabilities,
+  root_dir = require('lspconfig.util').root_pattern("go.work", "go.mod", ".git"),
+  settings = {
+    gopls = {
+      gofumpt = true,
+      analyses = {
+        unusedparams = true,
+        unreachable = true,
+      },
+      staticcheck = true,
+    },
+  },
+  on_attach = function(_, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format({ async = false })
+      end,
+    })
+  end,
+}
+
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "Show diagnostics in float" })
