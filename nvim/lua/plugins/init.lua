@@ -74,7 +74,7 @@ local default_plugins = {
     build = ":TSUpdate",
     config = function()
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { "go", "gomod", "gosum", "gowork" },
+        ensure_installed = { "go", "gomod", "gosum", "gowork", "svelte" },
         highlight = {
           enable = true,
         },

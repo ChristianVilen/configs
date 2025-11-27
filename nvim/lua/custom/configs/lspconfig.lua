@@ -60,6 +60,11 @@ lspconfig.gopls.setup {
   end,
 }
 
+lspconfig.svelte.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "Show diagnostics in float" })
