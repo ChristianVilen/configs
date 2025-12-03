@@ -1,5 +1,6 @@
 [push]
 	default = simple 
+	autoSetupRemote = true
 [pull] 
 	default = simple 
 	ff = only
@@ -45,3 +46,5 @@
 	ui = auto
 [branch]
 	sort = -committerdate
+[credential]
+	helper = store

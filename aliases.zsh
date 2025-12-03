@@ -5,7 +5,12 @@ alias ..="cd .."
 alias vim=nvim
 alias g=git
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# Disable Homebrew auto-update hints and reduce update frequency
+export HOMEBREW_NO_ENV_HINTS=1
+export HOMEBREW_AUTO_UPDATE_SECS=604800  # Update once per week (7 days)
+
+# Prioritize ~/bin for lua wrapper (uses luajit for Neovim Lua 5.1 compatibility)
+export PATH="$HOME/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm

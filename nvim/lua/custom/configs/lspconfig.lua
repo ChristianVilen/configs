@@ -13,7 +13,7 @@ for _, lsp in ipairs(servers) do
 end
 
 local function find_tsconfig_dir()
-    return lspconfig.util.root_pattern("tsconfig.json")(vim.fn.expand("%:p:h"))
+    return vim.fs.root(0, "tsconfig.json")
 end
 
 lspconfig.eslint.setup {
@@ -39,7 +39,9 @@ lspconfig.gopls.setup {
   cmd = { "gopls" },
   filetypes = { "go", "gomod" },
   capabilities = capabilities,
-  root_dir = require('lspconfig.util').root_pattern("go.work", "go.mod", ".git"),
+  root_dir = function()
+    return vim.fs.root(0, {"go.work", "go.mod", ".git"})
+  end,
   settings = {
     gopls = {
       gofumpt = true,
