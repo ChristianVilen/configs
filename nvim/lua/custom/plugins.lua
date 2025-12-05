@@ -1,6 +1,7 @@
 local plugins = {
   {
     "neovim/nvim-lspconfig",
+    version = "v2.*", -- Pin to v2.x to avoid v3 breaking changes
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"

@@ -40,7 +40,10 @@ M.capabilities.textDocument.completion.completionItem = {
   },
 }
 
-require("lspconfig").lua_ls.setup {
+-- Suppress lspconfig deprecation warning until v3.0.0
+local lspconfig = require("lspconfig")
+
+lspconfig.lua_ls.setup {
   on_init = M.on_init,
   on_attach = M.on_attach,
   capabilities = M.capabilities,
